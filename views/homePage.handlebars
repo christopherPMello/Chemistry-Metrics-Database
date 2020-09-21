@@ -1,0 +1,61 @@
+<!--
+/*********************************************************************
+** Program name: CS340 - Project Website
+** Author: Scott Edwardsen and Chris Mello
+** Date: 3/19/2019
+** Description: Used to Diplay the contents of the database
+*********************************************************************/
+-->
+
+
+<!--Create buttons so user can select which table to display the contents of -->
+
+<link rel="stylesheet" href="../css/tableStyle.css">
+ <div id="container" class="container">
+                <div id="formsWrap" class="col-sm-6 offset-sm-3 text-center">
+                        <h1>What information are you looking for?</h1>
+                    <form id="form"action="#" method="POST" class="justify-content-center">
+                        <div id="rButton">
+                            <span id="rButton"><button name="rButton" id="bButton" type="radio" value="COA" class="btn btn-light">COA</button></span>
+                            <span id="rButton"><button name="rButton" id="bButton" type="radio" value="Technician" class="btn btn-light">Technician</button></span>
+                            <span id="rButton"><button name="rButton" id="bButton" type="radio" value="Test" class="btn btn-light">Test</button></span>
+                            <span id="rButton"><button name="rButton" id="bButton" type="radio" value="Batch_Transaction" class="btn btn-light">Batch Transaction</button></span>
+                        </div>
+                        <div id="rButton">
+                            <span id="rButton"><button name="rButton" id="bButton" type="radio" value="Batch" class="btn btn-light">Batch</button></span>
+                            <span id="rButton"><button name="rButton" id="bButton" type="radio" value="Instrument" class="btn btn-light">Instrument</button></span>
+                            <span id="rButton"><button name="rButton" id="bButton" type="radio" value="Turn_Around_Time" class="btn btn-light">Turn Around</button></span>
+                            <span id="rButton"><button name="rButton" id="bButton" type="radio" value="Sample" class="btn btn-light">Sample</button></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+	
+
+	
+	<!--Display the contents of the selected table -->
+	
+	{{#if this.errorMsg}}
+		<h1>The search didn't return any records in the table</h1>	
+    {{else if this.results}}
+		<div id="tble">
+            <table class="table table-light" id="tbl">
+                    <thead class="thead-dark">
+                      <tr>
+                {{#each header}}
+                        <th scope="col">{{this}}</th>
+                {{/each}}
+                      </tr>
+                    </thead>
+                    <tbody>
+                {{#each results}}
+                      <tr>
+                          {{#each this}}
+                              <td>{{this}}</td>
+                          {{/each}}
+                      </tr>
+                {{/each}}
+                    </tbody>
+            </table>
+            </div>
+    {{/if}}

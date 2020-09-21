@@ -1,0 +1,83 @@
+<!--
+/*********************************************************************
+** Program name: CS340 - Project Website
+** Author: Scott Edwardsen and Chris Mello
+** Date: 3/19/2019
+** Description: Used to insert data into the Batch table
+*********************************************************************/
+-->
+
+
+<!--Allow user to provide input so they can create records in the table -->
+
+      <link rel="stylesheet" href="../css/tableStyle.css">
+      <link rel="stylesheet" href="../css/dropDown.css">
+      <!-- includes menu bar -->
+            <div id="container" class="container">
+                <div id="formsWrap" class="col-sm-6 offset-sm-3 text-center">
+                        <h1>Insert Batch Data</h1>
+                    <form id="form" action="#" method="POST" class="justify-content-center">
+                    <div class="form-group row">
+                            <label for="createDate" class="col-sm-2 col-form-label">Create Date</label>
+                        <div class="col-sm-10">
+                            <input name="createDate" type="datetime-local" class="form-control" placeholder="Create Date" required="required">
+                        </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="completeDate" class="col-sm-2 col-form-label">Complete Date</label>
+                        <div class="col-sm-10">
+                            <input name="completeDate" type="datetime-local" class="form-control" placeholder="Complete Date" required="required">
+                        </div>
+                        </div>
+                        {{!-- <div class="form-group row">
+                            <label for="serialNum" class="col-sm-2 col-form-label">Serial Number</label>
+                        <div class="col-sm-10">
+                           <input name="serialNum" type="number" class="form-control" placeholder="Serial Number" required="required">
+                        </div>
+                        </div> --}}
+                            <div class="form-group row" class="form-comtrol">
+                            <label for="serialNum" class="col-sm-2 col-form-label">Serial Number</label>
+                            <select id="selectOption" name="selectOption" class="form-comtrol" class="dropDown">
+                            {{#if this.drop}}
+                            {{#each drop}}
+                            
+                                <option name="serialNum" type="number" value="{{this}}">{{this}}</option>
+                            
+                            {{/each}}
+                            {{/if}}
+                            </select>
+                            </div>
+
+                            <div name="selectVal" id="selectVal" value=""></div>
+
+                            <button id="button" type="submit" class="btn btn-success">Insert</button>
+                    </form>
+                </div>
+            </div>
+
+			<!--Display the contents of the table -->
+			
+    {{#if this.errorMsg}}
+		<h1>The insert failed.  Please ensure foreign key requirements are met</h1>	
+    {{else if this.results}}
+            <div id="tble">
+            <table class="table table-light" id="tbl">
+                    <thead class="thead-dark">
+                      <tr>
+                {{#each header}}
+                        <th scope="col">{{this}}</th>
+                {{/each}}
+                      </tr>
+                    </thead>
+                    <tbody>
+                {{#each results}}
+                      <tr>
+                          {{#each this}}
+                              <td>{{this}}</td>
+                          {{/each}}
+                      </tr>
+                {{/each}}
+                    </tbody>
+            </table>
+            </div>
+    {{/if}}

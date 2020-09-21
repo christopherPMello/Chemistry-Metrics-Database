@@ -1,0 +1,68 @@
+
+<!--
+/*********************************************************************
+** Program name: CS340 - Project Website
+** Author: Scott Edwardsen
+** Date: 3/19/2019
+** Description: Used as main page.  ie. Headings
+*********************************************************************/
+-->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../css/homepageStylesheet.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Chemistry Database</title>
+    </head>
+    <body>
+	
+	<!--Menu/Heading for webpage-->
+	
+     <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <span class="navbar-brand" class="textFont">Food Testing</span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="homePage">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="lookup">Search</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Insert Info</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="insertCOA" class="dropdown-item">COA</a>
+                        <a href="insertTech" class="dropdown-item">Technician</a>
+                        <a href="insertTest" class="dropdown-item">Test</a>
+                        <a href="insertBatchTransaction" class="dropdown-item">Batch Transaction</a>
+                        <a href="insertBatch" class="dropdown-item">Batch</a>
+                        <a href="insertInstrument" class="dropdown-item">Instrument</a>
+                        <a href="insertTurnAround" class="dropdown-item">Turn Around</a>
+                        <a href="insertSample" class="dropdown-item">Sample</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="batchTransaction">Batch Trans. Update</a>
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tech">Tech Create/Delete</a>
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link" href="instrument">Instrument Create/Delete</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+   {{{body}}}
+    </body>
+    </html>

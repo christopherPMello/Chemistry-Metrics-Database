@@ -1,0 +1,99 @@
+<!--
+/*********************************************************************
+** Program name: CS340 - Project Website
+** Author: Scott Edwardsen and Chris Mello
+** Date: 3/19/2019
+** Description: Used to update Batch Transactions
+*********************************************************************/
+-->
+
+
+<!--Used to get user input for query -->
+
+      <link rel="stylesheet" href="../css/tableStyle.css">
+      <link rel="stylesheet" href="../css/formStyle.css">
+      <!-- includes menu bar -->
+            <div id="container" class="container">
+                <div id="formsWrap" class="col-sm-6 offset-sm-3 text-center">
+                    <form id="form" action="#" method="POST" class="justify-content-center">
+                      <h1>Batch Update</h1>
+					  
+					  <!--
+                        <div class="form-group row">
+                            <label for="Transaction_Number" class="col-sm-2 col-form-label">Transaction Number</label>
+                            <div class="col-sm-10">
+                            <input name="Transaction_Number" type="text" class="form-control">
+                            </div>
+                        </div>
+						-->
+						
+						<div class="form-group row" class="form-control" class="dropDown">
+                            <label for="Transaction_Number" class="col-sm-2 col-form-label">Transaction Number</label>
+                            <select id="Transaction_Number_Select" name="Transaction_Number_Select" class="form-comtrol">
+                            {{#if this.drop}}
+								{{#each drop}}
+                            
+									<option name="Transaction_Number" type="number" value="{{this}}">{{this}}</option>
+                            
+								{{/each}}
+                            {{/if}}
+                            </select>
+                        </div>
+						
+                        <div class="input-group mb-3">
+                          <span>Status</span>
+                                <div class="input-group-prepend" id="radioInput">
+                                  <div class="input-group-text">
+                                    <label for="initalCheck">
+                                    <input type="radio" id="initalCheck" name="check" value="created"> Created
+                                  </div>
+                                </div>
+                              <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                    <label for="completeCheck">
+                                    <input type="radio" id="in_progress" name="check" id="rButton" value="in progress"> In-Progress
+                                    </div>
+                              </div>
+                               <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                    <label for="completeCheck">
+                                    <input type="radio" id="completeCheck" name="check" id="rButton" value="complete"> Complete
+                                    </div>
+                              </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">Assign</button>
+                    </form>
+                </div>
+            </div>
+			
+			
+	<!--Display the contents of the database.  Technician and Batch Transaction joined together-->
+
+    {{#if this.errorMsg}}
+		<h1>The update failed.  Please ensure foreign key requirements are met</h1>	
+	{{else if this.updatedRecords}}
+		<h1>The update failed.  No records were updated.  Please ensure foreign key requirements are met</h1>	
+	{{else if this.results}}
+            <div id="tble">
+            <table class="table table-light" id="tbl">
+                    <thead class="thead-dark">
+                      <tr>
+                {{#each header}}
+                        <th scope="col">{{this}}</th>
+                {{/each}}
+                      </tr>
+                    </thead>
+                    <tbody>
+                {{#each results}}
+                      <tr>
+                          {{#each this}}
+                              <td>{{this}}</td>
+                          {{/each}}
+                      </tr>
+                {{/each}}
+                    </tbody>
+            </table>
+            </div>
+    {{/if}}
+	
+	

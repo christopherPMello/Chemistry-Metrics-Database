@@ -1,0 +1,108 @@
+<!--
+/*********************************************************************
+** Program name: CS340 - Project Website
+** Author: Scott Edwardsen and Chris Mello
+** Date: 3/19/2019
+** Description: Used to insert data into the Batch Transaction table
+*********************************************************************/
+-->
+
+
+<!--Allow user to provide input so they can create records in the table -->
+
+      <link rel="stylesheet" href="../css/tableStyle.css">
+      <link rel="stylesheet" href="../css/formStyle.css">
+      <!-- includes menu bar -->
+            <div id="container" class="container">
+                <div id="formsWrap" class="col-sm-6 offset-sm-3 text-center">
+                        <h1>Insert Batch Transaction Data</h1>
+                    <form id="form" action="#" method="POST" class="justify-content-center">
+                        {{!-- <div class="form-group row">
+                            <label for="technicianID" class="col-sm-2 col-form-label">Technician ID</label>
+                            <div class="col-sm-10">
+                             <input name="technicianID" type="number" class="form-control" required="required">
+                            </div>
+                        </div> --}}
+                            <div class="form-group row" class="form-comtrol" class="dropDown">
+                            <label for="technicianID" class="col-sm-2 col-form-label">Technician ID</label>
+                            <select id="technicianIDSelect" name="technicianIDSelect" class="form-comtrol">
+                            {{#if this.dropOne}}
+                            {{#each dropOne}}
+                            
+                                <option name="technicianID" type="number" value="{{this}}">{{this}}</option>
+                            
+                            {{/each}}
+                            {{/if}}
+                            </select>
+                            </div>
+                        <div class="input-group mb-3">
+                          <span>Status</span>
+                                <div class="input-group-prepend" id="radioInput">
+                                  <div class="input-group-text">
+                                    <label for="initalCheck">
+                                    <input type="radio" id="initalCheck" name="check" value="created"> Created
+                                  </div>
+                                </div>
+                              <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                    <label for="completeCheck">
+                                    <input type="radio" id="in_progress" name="check" id="rButton" value="in progress"> In-Progress
+                                    </div>
+                              </div>
+                               <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                    <label for="completeCheck">
+                                    <input type="radio" id="completeCheck" name="check" id="rButton" value="complete"> Complete
+                                    </div>
+                              </div>
+                            </div>
+                        {{!-- <div class="form-group row">
+                            <label for="batchID" class="col-sm-2 col-form-label">Batch ID</label>
+                            <div class="col-sm-10">
+                            <input name="batchID" type="number" class="form-control" required="required">
+                            </div>
+                        </div> --}}
+
+                            {{#if this.dropTwo}}
+                            <div class="form-group row" class="form-comtrol" class="dropDown">
+                            <label for="batchID" class="col-sm-2 col-form-label">Batch ID</label>
+                            <select id="batchIDSelect" name="batchIDSelect" class="form-comtrol">
+                            {{#each dropTwo}}
+                            
+                                <option name="batchID" type="number" value="{{this}}">{{this}}</option>
+                            
+                            {{/each}}
+                            </select>
+                            </div>
+                            {{/if}}
+                            <button type="submit" class="btn btn-success">Insert</button>
+                    </form>
+                </div>
+            </div>
+			
+	<!--Display the contents of the table -->
+			
+    {{#if this.errorMsg}}
+		<h1>The insert failed.  Please ensure foreign key requirements are met</h1>	
+    {{else if this.results}}
+            <div id="tble">
+            <table class="table table-light" id="tbl">
+                    <thead class="thead-dark">
+                      <tr>
+                {{#each header}}
+                        <th scope="col">{{this}}</th>
+                {{/each}}
+                      </tr>
+                    </thead>
+                    <tbody>
+                {{#each results}}
+                      <tr>
+                          {{#each this}}
+                              <td>{{this}}</td>
+                          {{/each}}
+                      </tr>
+                {{/each}}
+                    </tbody>
+            </table>
+            </div>
+    {{/if}}

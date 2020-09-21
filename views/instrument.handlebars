@@ -1,0 +1,75 @@
+<!--
+/*********************************************************************
+** Program name: CS340 - Project Website
+** Author: Scott Edwardsen and Chris Mello
+** Date: 3/19/2019
+** Description: Used to insert and delete data from the Instrument table
+*********************************************************************/
+-->
+
+<!--Allow user to provide input so they can create records in the table -->
+
+<link rel="stylesheet" href="../css/tableStyle.css">
+
+<div id="formsWrap" class="col-sm-6 offset-sm-3 text-center">
+     <h1>Add an Instrument</h1>
+     <form id="newInstrument">
+          <fieldset>
+               <fieldset>
+                    <div class="form-group row">
+                         <label for="Serial_Number" class="col-sm-2 col-form-label">Serial Number</label>
+                    <div class="col-sm-10">
+                          <input type="text" class="form-control" id="Serial_Number" name="Serial_Number" size="30" maxlength="100">
+                    </div>
+                    </div>
+               </fieldset>
+               
+               <fieldset>
+			     <div class="form-group row">
+                         <label class="col-sm-2 col-form-label">Instrument Name</label>
+                    <div class="col-sm-10">
+                         <input class="form-control" type="text" id="Instrument_Name" name="Instrument_Name" size="30" maxlength="100">
+                    </div>
+                    </div>
+               </fieldset>
+               
+		  <button class="btn btn-success" type="data" onclick="addRecord()">Create Instrument</button>
+		  </fieldset>
+     </form>
+</div>
+
+</br>
+</br>
+
+{{{body}}}
+
+<!--Build the Table if Instruments exists -->
+
+{{#if results}}
+     <div id="tble">
+	<table id="instrumentTable" class="table table-light">
+           <thead class="thead-dark">
+		<tr>
+			<th>Serial Number</th>
+			<th>Instrument Name</th>
+			<th></th>
+              
+		</tr>
+          </thead>
+        
+        {{#each results}}
+            <tr id="tableRow">
+                <td id="Serial_Number">{{this.Serial_Number}}</td>
+                <td id="Instrument_Name">{{this.Instrument_Name}}</td>
+                <td id="deleteButton" name={{this.Serial_Number}}><input type="button" name="deleteButtonValue" value="Delete" onClick="deleteRecord({{this.Serial_Number}})"><input type="hidden" value="{{this.Serial_Number}}" id="techID"></td>
+            </tr>
+        {{/each}}
+		</table>
+		{{else}}
+		<table id="instrumentTable"></table>
+		<h1>There aren't any records in the table</h1>
+    {{/if}}
+    </div>
+	
+	
+	<script id="techPageJavaScript" src="/javaScript/instrumentPageSqlScript.js"></script>

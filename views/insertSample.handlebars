@@ -1,0 +1,93 @@
+<!--
+/*********************************************************************
+** Program name: CS340 - Project Website
+** Author: Scott Edwardsen and Chris Mello
+** Date: 3/19/2019
+** Description: Used to insert data into the Sample table
+*********************************************************************/
+-->
+
+<!--Allow user to provide input so they can create records in the table -->
+
+      <link rel="stylesheet" href="../css/tableStyle.css">
+      <!-- includes menu bar -->
+            <div id="container" class="container">
+                <div id="formsWrap" class="col-sm-6 offset-sm-3 text-center">
+                        <h1>Insert Sample Data</h1>
+                    <form id="form" action="#" method="POST" class="justify-content-center">
+                          {{!-- <div class="form-group row">
+                            <label for="reportID" class="col-sm-2 col-form-label">Report ID</label>
+                            <div class="col-sm-10">
+                            <input name="reportID" type="number" class="form-control" required="required">
+                            </div>
+                        </div> --}}
+                            <div class="form-group row" class="form-comtrol" class="dropDown">
+                            <label for="reportID" class="col-sm-2 col-form-label">Report ID</label>
+                            <select id="reportIDSelect" name="reportIDSelect" class="form-comtrol">
+                            {{#if this.dropTwo}}
+                            {{#each dropTwo}}
+                            
+                                <option name="reportID" type="number" value="{{this}}">{{this}}</option>
+                            
+                            {{/each}}
+                            {{/if}}
+                            </select>
+                            </div>
+          
+                          <div class="form-group row">
+                            <label for="receivedDate" class="col-sm-2 col-form-label">Received Date</label>
+                            <div class="col-sm-10">
+                           <input name="receivedDate" type="datetime-local" class="form-control" required="required">
+                            </div>
+                        </div>
+                          {{!-- <div class="form-group row">
+                            <label for="testID" class="col-sm-2 col-form-label">Test ID</label>
+                            <div class="col-sm-10">
+                          <input name="testID" type="number" class="form-control" required="required">
+                            </div>
+                        </div> --}}
+                            <div class="form-group row" class="form-comtrol" class="dropDown">
+                            <label for="testID" class="col-sm-2 col-form-label">Test ID</label>
+                            <select id="testIDSelect" name="testIDSelect" class="form-comtrol">
+                            {{#if this.dropOne}}
+                            {{#each dropOne}}
+                            
+                                <option name="testID" type="number" value="{{this}}">{{this}}</option>
+                            
+                            {{/each}}
+                            {{/if}}
+                            </select>
+                            </div>
+                            <button type="submit" class="btn btn-success">Insert</button>
+                    </form>
+                </div>
+            </div>
+			
+
+			
+<!--Display the contents of the table -->
+
+	{{#if this.errorMsg}}
+		<h1>The insert failed.  Please ensure foreign key requirements are met</h1>	
+    {{else if this.results}}
+            <div id="tble">
+            <table class="table table-light" id="tbl">
+                    <thead class="thead-dark">
+                      <tr>
+                {{#each header}}
+                        <th scope="col">{{this}}</th>
+                {{/each}}
+                      </tr>
+                    </thead>
+                    <tbody>
+                {{#each results}}
+                      <tr>
+                          {{#each this}}
+                              <td>{{this}}</td>
+                          {{/each}}
+                      </tr>
+                {{/each}}
+                    </tbody>
+            </table>
+            </div>
+    {{/if}}

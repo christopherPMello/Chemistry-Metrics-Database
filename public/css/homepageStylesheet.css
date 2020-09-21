@@ -1,0 +1,12 @@
+body {
+    background:  url("https://images.unsplash.com/photo-1472555753081-650dbef985c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1048&q=80") no-repeat center center fixed ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#text{
+    padding-top: 5px;
+    padding-right: 15px;
+    color: white;
+}

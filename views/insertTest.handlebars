@@ -1,0 +1,105 @@
+<!--
+/*********************************************************************
+** Program name: CS340 - Project Website
+** Author: Scott Edwardsen and Chris Mello
+** Date: 3/19/2019
+** Description: Used to insert data into the Test table
+*********************************************************************/
+-->
+
+<!--Allow user to provide input so they can create records in the table -->
+
+      <link rel="stylesheet" href="../css/tableStyle.css">
+      <!-- includes menu bar -->
+            <div id="container" class="container">
+                <div id="formsWrap" class="col-sm-6 offset-sm-3 text-center">
+                        <h1>Insert Test Data</h1>
+                    <form id="form" action="#" method="POST" class="justify-content-center">
+                          <div class="form-group row">
+                            <label for="testCode" class="col-sm-2 col-form-label">Test Code</label>
+                            <div class="col-sm-10">
+                          <input name="testCode" type="number" class="form-control" required="required">
+                            </div>
+                        </div>
+                          <div class="form-group row">
+                            <label for="rushCode" class="col-sm-2 col-form-label">Rush Code</label>
+                            <div class="col-sm-10">
+                          <input name="rushCode" type="number" class="form-control">
+                            </div>
+                        </div>
+                          <div class="form-group row">
+                            <label for="result" class="col-sm-2 col-form-label">Result</label>
+                            <div class="col-sm-10">
+                          <input name="result" type="text" class="form-control">
+                            </div>
+                        </div>
+                          <div class="form-group row">
+                            <label for="testReasonCode" class="col-sm-2 col-form-label">Test Reason</label>
+                            <div class="col-sm-10">
+                          <input name="testReasonCode" type="text" class="form-control" required="required">
+                            </div>
+                        </div>
+                          <div class="form-group row">
+                            <label for="startTesting" class="col-sm-2 col-form-label">Start Testing</label>
+                            <div class="col-sm-10">
+                          <input name="startTesting" type="datetime-local" class="form-control">
+                            </div>
+                        </div>
+                          <div class="form-group row">
+                            <label for="endTesting" class="col-sm-2 col-form-label">End Testing</label>
+                            <div class="col-sm-10">
+                            <input name="endTesting" type="datetime-local" class="form-control" placeholder="End Testing">
+                            </div>
+                        </div>
+                          {{!-- <div class="form-group row">
+                            <label for="batchID" class="col-sm-2 col-form-label">Batch ID</label>
+                            <div class="col-sm-10">
+                           <input name="batchID" type="number" class="form-control" placeholder="Batch ID">
+                            </div>
+                        </div> --}}
+						
+						
+                            <div class="form-group row" class="form-control" class="dropDown">
+                            <label for="batchID" class="col-sm-2 col-form-label">Batch ID</label>
+                            <select id="batchIDSelect" name="batchIDSelect" class="form-comtrol">
+                            {{#if this.drop}}
+                            {{#each drop}}
+                            
+                                <option name="batchID" type="number" value="{{this}}">{{this}}</option>
+                            
+                            {{/each}}
+                            {{/if}}
+                            </select>
+                            </div>
+							
+                            <button type="submit" class="btn btn-success">Insert</button>
+                    </form>
+                </div>
+            </div>
+			
+<!--Display the contents of the table -->
+			
+    {{#if this.errorMsg}}
+		<h1>The insert failed.  Please ensure foreign key requirements are met</h1>	
+    {{else if this.results}}
+            <div id="tble">
+            <table class="table table-light" id="tbl">
+                    <thead class="thead-dark">
+                      <tr>
+                {{#each header}}
+                        <th scope="col">{{this}}</th>
+                {{/each}}
+                      </tr>
+                    </thead>
+                    <tbody>
+                {{#each results}}
+                      <tr>
+                          {{#each this}}
+                              <td>{{this}}</td>
+                          {{/each}}
+                      </tr>
+                {{/each}}
+                    </tbody>
+            </table>
+            </div>
+    {{/if}}
